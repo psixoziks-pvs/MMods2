@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.anatawa12.forge:ForgeGradle:1.2-1.0.+'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+
+version = project.modVersion
+group = 'ru.pnecrome'
+archivesBaseName = 'PNecrome-1.16.5'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+minecraft {
+    mappings channel: 'snapshot', version: '20210309-1.16.5'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods { pnecrome { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods { pnecrome { source sourceSets.main } }
+        }
+    }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.39'
+}
+
+sourceSets {
+    main {
+        java.srcDirs += '../../common/java'
+        resources.srcDirs += '../../common/resources'
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'   : 'pnecrome',
+            'Implementation-Title'  : project.name,
+            'Implementation-Version': project.modVersion
+        ])
+    }
+}

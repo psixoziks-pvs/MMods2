@@ -1,0 +1,16 @@
+// PNecrome — корневая сборка. Каждый подпроект в versions/<key>/ — самостоятельный мод.
+allprojects {
+    group = 'com.pnecrome'
+    version = '1.0.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    java {
+        sourceCompatibility = JavaVersion.toVersion(project.hasProperty('pnecromeJava') ? project.pnecromeJava : 17)
+    }
+}
+
+task buildAll {
+    dependsOn subprojects.collect { it.tasks.matching { t -> t.name == 'build' } }
+}
