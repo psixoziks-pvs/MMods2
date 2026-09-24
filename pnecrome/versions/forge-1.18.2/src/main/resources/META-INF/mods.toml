@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="MIT"
+
+[[mods]]
+modId="pnecrome"
+version="1.0.0"
+displayName="PNecrome"
+authors="PNecrome Team"
+displayTest="IGNORE_ALL_VERSION"
+description="""Некромантский мод: распиливайте павших мобов Костяной пилой на части тел
+(голова, руки, ноги, туловище) и приживляйте их другим существам.
+Каждое скрещивание рождает подвид со собственным именем — Ревенант, Миазма,
+Пустотомах, Грозобор и десятки других. Ведите записи в Некрономиконе."""
+
+[[dependencies.pnecrome]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pnecrome]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,)"
+    ordering="NONE"
+    side="BOTH"

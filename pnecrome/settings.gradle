@@ -1,0 +1,5 @@
+rootProject.name = 'PNecrome'
+file('versions').eachDir { d ->
+    include ":${d.name}"
+    project(":${d.name}").projectDir = new File("versions/${d.name}")
+}

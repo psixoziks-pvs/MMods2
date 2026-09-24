@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.gradle.userdev' version '7.0.15'
+}
+
+version = project.modVersion
+group = 'ru.pnecrome'
+archivesBaseName = 'PNecrome-1.21'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'net.neoforged:neoforge:21.0.37'
+}
+
+sourceSets {
+    main {
+        java.srcDirs += '../../common/java'
+        resources.srcDirs += '../../common/resources'
+    }
+}
+
+runs {
+    client { workingDirectory file('run') }
+    server { workingDirectory file('run') }
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'   : 'pnecrome',
+            'Implementation-Title'  : project.name,
+            'Implementation-Version': project.modVersion
+        ])
+    }
+}
